@@ -47,8 +47,8 @@ This project is inspired from whatsapp and allow anyone to login with google and
 -----------------------
 - Next.js(React)
 - Firebase
+- Styled components
 
-Styled components is used to keep it clean. </br>
 Icons are by Material-ui. </br>
 Firebase Auth for sign-in authentication. </br>
 Email validator to verify. </br>
@@ -56,5 +56,4 @@ React-firebase-hooks for verfying login </br>
 better-React-spinkit for loading  animation </br>
 
 ## Error report:
-- faker.js is unable to provide images. (error-404)
-- components/Posts/line:17 can not set db as dependecy of useEfect. (can not use before initialization)
+- FIRESTORE (9.6.1) INTERNAL ASSERTION FAILED
