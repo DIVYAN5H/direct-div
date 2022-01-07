@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -31,4 +31,30 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details. -->
+
+
+
+# Group-div
+
+This project is inspired from whatsapp and allow anyone to login with google and chat with users
+
+[![Deployed group-div](https://vercel.com/button)](#)
+
+
+-----------------------
+----Technology used----
+-----------------------
+- Next.js(React)
+- Firebase
+
+Styled components is used to keep it clean. </br>
+Icons are by Material-ui. </br>
+Firebase Auth for sign-in authentication. </br>
+Email validator to verify. </br>
+React-firebase-hooks for verfying login </br>
+better-React-spinkit for loading  animation </br>
+
+## Error report:
+- faker.js is unable to provide images. (error-404)
+- components/Posts/line:17 can not set db as dependecy of useEfect. (can not use before initialization)
