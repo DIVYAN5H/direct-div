@@ -56,6 +56,8 @@ Email validator to verify. </br>
 React-firebase-hooks for verfying login </br>
 better-react-spinkit for loading  animation </br>
 router is used<br>
+timeago-react for timestamps<br>
+moment for managing timestamps<br>
 
 <!-- ## Error report:
 - FIRESTORE (9.6.1) INTERNAL ASSERTION FAILED -->
