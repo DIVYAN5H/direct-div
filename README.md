@@ -57,5 +57,5 @@ React-firebase-hooks for verfying login </br>
 better-react-spinkit for loading  animation </br>
 router is used<br>
 
-## Error report:
-- FIRESTORE (9.6.1) INTERNAL ASSERTION FAILED
+<!-- ## Error report:
+- FIRESTORE (9.6.1) INTERNAL ASSERTION FAILED -->
