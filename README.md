@@ -39,7 +39,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 This project is inspired from whatsapp and allow anyone to login with google and chat with users
 
-[![Deployed group-div](https://vercel.com/button)](#)
+[![Deployed group-div](https://vercel.com/button)](https://direct-div.vercel.app/)
 
 
 -----------------------
@@ -48,12 +48,14 @@ This project is inspired from whatsapp and allow anyone to login with google and
 - Next.js(React)
 - Firebase
 - Styled components
+- Server side rendering
 
 Icons are by Material-ui. </br>
 Firebase Auth for sign-in authentication. </br>
 Email validator to verify. </br>
 React-firebase-hooks for verfying login </br>
-better-React-spinkit for loading  animation </br>
+better-react-spinkit for loading  animation </br>
+router is used<br>
 
 ## Error report:
 - FIRESTORE (9.6.1) INTERNAL ASSERTION FAILED

@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db, fv} from "../firebase";
+import { auth, db, fv } from "../firebase";
 import Login from "./login";
 import Loading from "../components/Loading";
 import { useEffect } from "react";
@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
       db.collection("users").doc(user.uid).set(
         {
           email: user.email,
-          // lastSeen: fv.serverTimestamp(),
+          lastSeen: fv.serverTimestamp(),
           photoURL: user.photoURL,
         },
         { merge: true }

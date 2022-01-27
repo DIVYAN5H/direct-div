@@ -9,7 +9,6 @@ const firebaseConfig = {
   storageBucket: "direct-div.appspot.com",
   messagingSenderId: "886731095784",
   appId: "1:886731095784:web:cb363e1773a316616ed35d",
-  measurementId: "G-PCZMWJNVFJ",
 };
 
 const app = !firebase.apps.length

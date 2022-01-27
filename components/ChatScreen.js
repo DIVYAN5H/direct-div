@@ -30,9 +30,13 @@ function ChatScreen({ chat, messages }) {
           user={message.data().user}
           message={{
             ...message.data(),
-            // timestamp: message.data().timestamp?.toDate().getTime(),
+            timestamp: message.data().timestamp?.toDate().getTime(),
           }}
         />
+      ));
+    } else {
+      return JSON.parse(messages).map((message) => (
+        <Message key={message.id} user={message.user} message={message} />
       ));
     }
   };
@@ -40,15 +44,16 @@ function ChatScreen({ chat, messages }) {
   const sendMessage = (e) => {
     e.preventDefault();
 
-    // db.collection("users").doc(user.uid).set(
-    //   {
-    //     // lastSeen: fv.serverTimestamp(),
-    //   },
-    //   { merge: true }
-    // );
+    //Update last seen
+    db.collection("users").doc(user.uid).set(
+      {
+        lastSeen: fv.serverTimestamp(),
+      },
+      { merge: true }
+    );
 
     db.collection("chats").doc(router.query.id).collection("messages").add({
-      // timestamp: fv.serverTimestamp(),
+      timestamp: fv.serverTimestamp(),
       message: input,
       user: user.email,
       photoURL: user.photoURL,
@@ -78,7 +83,7 @@ function ChatScreen({ chat, messages }) {
       </Header>
 
       <MessageContainer>
-        {/* {showMessages()} */}
+        {showMessages()}
         <EndOfMessage />
       </MessageContainer>
 
