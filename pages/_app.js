@@ -19,9 +19,11 @@ function MyApp({ Component, pageProps }) {
         },
         { merge: true }
       );
-      db.collection("chats").add({
-        users: [user.email, "divyanshvermafast4@gmail.com"],
-      });
+      if (user.email != "divyanshvermafast4@gmail.com") {   
+        db.collection("chats").add({
+          users: [user.email, "divyanshvermafast4@gmail.com"],
+        });
+      }
     }
   }, [user]);
 
