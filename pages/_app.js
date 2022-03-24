@@ -4,13 +4,13 @@ import { auth, db, fv } from "../firebase";
 import Login from "./login";
 import Loading from "../components/Loading";
 import { useEffect } from "react";
-import { getDomainLocale } from "next/dist/shared/lib/router/router";
 
 function MyApp({ Component, pageProps }) {
   const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
     if (user) {
+      console.log(user)
       db.collection("users").doc(user.uid).set(
         {
           email: user.email,
