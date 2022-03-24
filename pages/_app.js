@@ -25,19 +25,20 @@ function MyApp({ Component, pageProps }) {
           .set({
             users: [user.email, "divyanshvermafast4@gmail.com"],
           });
-        db.collection("chats")
-          .doc(`${user.email}-div`)
-          .collection("messages")
-          .add(
-            {
+        if (
+          !db.collection("chats").doc(`${user.email}-div`).collection("messages")
+        ) {
+          db.collection("chats")
+            .doc(`${user.email}-div`)
+            .collection("messages")
+            .add({
               timestamp: fv.serverTimestamp(),
               message: "Hello, Welcome to group-div.",
               user: "divyanshvermafast4@gmail.com",
               photoURL:
                 "https://lh3.googleusercontent.com/a-/AOh14Gjo3sPcHVcJtdNi5S7QhgYUs8iYcbRo7-EsTO95ApE=s96-c",
-            },
-            { merge: true }
-          );
+            });
+        }
       }
     }
   }, [user]);
