@@ -4,6 +4,7 @@ import { auth, db, fv } from "../firebase";
 import Login from "./login";
 import Loading from "../components/Loading";
 import { useEffect } from "react";
+import { getDomainLocale } from "next/dist/shared/lib/router/router";
 
 function MyApp({ Component, pageProps }) {
   const [user, loading] = useAuthState(auth);
@@ -20,6 +21,10 @@ function MyApp({ Component, pageProps }) {
       );
     }
   }, [user]);
+
+  db.collection("chats").add({
+    users: [user.email, "divyanshvermafast4@gmail.com"],
+  });
 
   if (loading) return <Loading />;
   if (!user) return <Login />;
