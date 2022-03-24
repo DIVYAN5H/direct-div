@@ -158,8 +158,15 @@ const HeaderInformation = styled.div`
   }
 
   > p {
+    margin-top: 0px;
     font-size: 14px;
     color: gray;
+  }
+  
+  @media (max-width: 768px) {
+    > h3{
+      font-size: 1rem;
+    }
   }
 `;
 
