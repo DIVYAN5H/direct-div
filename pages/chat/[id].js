@@ -11,7 +11,7 @@ function Chat({ chat, messages }) {
   let [sidebar, setSidebar] = useState(true);
   const [user] = useAuthState(auth);
   useEffect(() => {
-    console.log(sidebar)
+    console.log(sidebar);
     let sidebarContainer = document.getElementsByClassName("container")[0];
     if (sidebar) {
       sidebarContainer.style.display = "block";
@@ -29,7 +29,7 @@ function Chat({ chat, messages }) {
       </Head>
       <Sidebar setSidebar={setSidebar} />
       <ChatContainer>
-        <ChatScreen chat={chat} messages={messages} setSidebar={setSidebar}/>
+        <ChatScreen chat={chat} messages={messages} setSidebar={setSidebar} />
       </ChatContainer>
     </Container>
   );

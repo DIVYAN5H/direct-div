@@ -4,10 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import styled from "styled-components";
 import { db, auth, fv } from "../firebase";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import Message from "./Message";
 import { useRef, useState } from "react";
 import getRecipientEmail from "../utils/getRecipientEmail";
@@ -110,9 +108,6 @@ function ChatScreen({ chat, messages, setSidebar }) {
           <IconButton>
             <MenuIcon onClick={() => setSidebar(true)} />
           </IconButton>
-          {/* <IconButton>
-            <MoreVertIcon />
-          </IconButton> */}
         </HeaderIcons>
       </Header>
 
@@ -122,8 +117,11 @@ function ChatScreen({ chat, messages, setSidebar }) {
       </MessageContainer>
 
       <InputContainer>
-        {/* <InsertEmoticonIcon /> */}
-        <Input value={input} onChange={(e) => setInput(e.target.value)} />
+        <Input
+          value={input}
+          onClick={scrollToBottom}
+          onChange={(e) => setInput(e.target.value)}
+        />
         <Button disabled={!input} type="submit" onClick={sendMessage}>
           <ChevronRightIcon />
         </Button>
@@ -162,9 +160,9 @@ const HeaderInformation = styled.div`
     font-size: 14px;
     color: gray;
   }
-  
+
   @media (max-width: 768px) {
-    > h3{
+    > h3 {
       font-size: 1rem;
     }
   }
@@ -175,14 +173,12 @@ const HeaderIcons = styled.div`
 `;
 
 const MessageContainer = styled.div`
-  padding: 30px;
+  padding: 20px;
   background-color: #212121;
   min-height: 90vh;
 `;
 
-const EndOfMessage = styled.div`
-  margin-bottom: 50px;
-`;
+const EndOfMessage = styled.div``;
 
 const InputContainer = styled.form`
   display: flex;

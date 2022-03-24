@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if (user) {
-      console.log(user)
+      console.log(user);
       db.collection("users").doc(user.uid).set(
         {
           email: user.email,
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
         },
         { merge: true }
       );
-      if (user.email != "divyanshvermafast4@gmail.com") {   
+      if (user.email != "divyanshvermafast4@gmail.com") {
         db.collection("chats").add({
           users: [user.email, "divyanshvermafast4@gmail.com"],
         });

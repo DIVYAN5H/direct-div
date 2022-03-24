@@ -2,14 +2,13 @@ import { Avatar, Button, IconButton } from "@material-ui/core";
 import styled from "styled-components";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import SearchIcon from "@material-ui/icons/Search";
 import * as EmailValidator from "email-validator";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { auth, db } from "../firebase";
 import Chat from "./Chat";
 
-function Sidebar({setSidebar}) {
+function Sidebar({ setSidebar }) {
   const [user] = useAuthState(auth);
   const userChatRef = db
     .collection("chats")
@@ -55,11 +54,6 @@ function Sidebar({setSidebar}) {
           </IconButton>
         </IconsContainer>
       </Header>
-
-      <Search>
-        <SearchIcon />
-        <SearchInput placeholder="Search in chats" />
-      </Search>
 
       <SidebarButton onClick={createChat}>Start a new chat</SidebarButton>
 
@@ -110,12 +104,6 @@ const Search = styled.div`
   align-items: center;
   padding: 20px;
   border-radius: 2px;
-`;
-
-const SearchInput = styled.input`
-  outline: none;
-  border: none;
-  flex: 1;
 `;
 
 const SidebarButton = styled(Button)`
