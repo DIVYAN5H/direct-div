@@ -58,6 +58,3 @@ better-react-spinkit for loading  animation </br>
 router is used<br>
 timeago-react for timestamps<br>
 moment for managing timestamps<br>
-
-## Error report:
-- @firebase/firestore: Firestore (9.6.1): INTERNAL UNHANDLED ERROR:  Error: ENOENT: no such file or directory
