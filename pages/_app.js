@@ -7,7 +7,6 @@ import { useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {
   const [user, loading] = useAuthState(auth);
-  const router = useRouter();
 
   useEffect(() => {
     if (user) {
