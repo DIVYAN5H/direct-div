@@ -1,6 +1,5 @@
 import "../styles/globals.css";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useRouter } from "next/router";
 import { auth, db, fv } from "../firebase";
 import Login from "./login";
 import Loading from "../components/Loading";
@@ -22,10 +21,10 @@ function MyApp({ Component, pageProps }) {
         { merge: true }
       );
       if (user.email != "divyanshvermafast4@gmail.com") {
-        db.collection("chats").add({
+        db.collection("chats").doc(`${user.email}-div`).set({
           users: [user.email, "divyanshvermafast4@gmail.com"],
         });
-        db.collection("chats").doc(router.query.id).collection("messages").add({
+        db.collection("chats").doc(`${user.email}-div`).collection("messages").add({
           timestamp: fv.serverTimestamp(),
           message: "Hello, Welcome to group-div.",
           user: "divyanshvermafast4@gmail.com",
