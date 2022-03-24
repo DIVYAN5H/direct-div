@@ -108,7 +108,7 @@ function ChatScreen({ chat, messages, setSidebar }) {
 
         <HeaderIcons>
           <IconButton>
-            <MenuIcon onClick={() => setSidebar(true)} color="primary"/>
+            <MenuIcon onClick={() => setSidebar(true)} />
           </IconButton>
           {/* <IconButton>
             <MoreVertIcon />
@@ -164,7 +164,7 @@ const HeaderInformation = styled.div`
 `;
 
 const HeaderIcons = styled.div`
-  border-radius: 50%;
+  filter: invert(1);
 `;
 
 const MessageContainer = styled.div`
