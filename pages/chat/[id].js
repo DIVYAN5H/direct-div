@@ -5,9 +5,21 @@ import Sidebar from "../../components/Sidebar";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../firebase";
 import getRecipientEmail from "../../utils/getRecipientEmail";
+import { useEffect, useState } from "react";
 
 function Chat({ chat, messages }) {
+  let [sidebar, setSidebar] = useState(true);
   const [user] = useAuthState(auth);
+  useEffect(() => {
+    console.log(sidebar)
+    let sidebarContainer = document.getElementsByClassName("container")[0];
+    if (sidebar) {
+      sidebarContainer.style.display = "block";
+    } else {
+      sidebarContainer.style.display = "none";
+    }
+    console.log(sidebarContainer);
+  }, [sidebar]);
 
   return (
     <Container>
@@ -15,9 +27,9 @@ function Chat({ chat, messages }) {
         <title>Chat with {getRecipientEmail(chat.users, user)}</title>
         <link rel="icon" href="/logo.png" />
       </Head>
-      <Sidebar />
+      <Sidebar setSidebar={setSidebar} />
       <ChatContainer>
-        <ChatScreen chat={chat} messages={messages} />
+        <ChatScreen chat={chat} messages={messages} setSidebar={setSidebar}/>
       </ChatContainer>
     </Container>
   );
@@ -45,20 +57,20 @@ export async function getServerSideProps(context) {
       timestamp: messages.timestamp.toDate().getTime(),
     }));
 
-    // Perp the chats
-    const chatRes = await ref.get();
-    const chat = {
-      id: chatRes.id,
-      ...chatRes.data(),
-    };
+  // Perp the chats
+  const chatRes = await ref.get();
+  const chat = {
+    id: chatRes.id,
+    ...chatRes.data(),
+  };
 
-    console.log(JSON.stringify(messages))
-    return {
-      props: {
-        messages: JSON.stringify(messages),
-        chat: chat,
-      },
-    };
+  console.log(JSON.stringify(messages));
+  return {
+    props: {
+      messages: JSON.stringify(messages),
+      chat: chat,
+    },
+  };
 }
 
 const Container = styled.div`

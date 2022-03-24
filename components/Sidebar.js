@@ -1,6 +1,6 @@
 import { Avatar, Button, IconButton } from "@material-ui/core";
 import styled from "styled-components";
-import ChatIcon from "@material-ui/icons/Chat";
+import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import SearchIcon from "@material-ui/icons/Search";
 import * as EmailValidator from "email-validator";
@@ -9,7 +9,7 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { auth, db } from "../firebase";
 import Chat from "./Chat";
 
-function Sidebar() {
+function Sidebar({setSidebar}) {
   const [user] = useAuthState(auth);
   const userChatRef = db
     .collection("chats")
@@ -42,13 +42,13 @@ function Sidebar() {
     );
 
   return (
-    <Container>
+    <Container className="container">
       <Header>
         <UserAvatar src={user.photoURL} />
 
         <IconsContainer>
           <IconButton>
-            <ChatIcon />
+            <MenuOpenIcon onClick={() => setSidebar(false)} />
           </IconButton>
           <IconButton>
             <ExitToAppIcon onClick={() => auth.signOut()} />

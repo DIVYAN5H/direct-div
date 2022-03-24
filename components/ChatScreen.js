@@ -5,14 +5,15 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import styled from "styled-components";
 import { db, auth, fv } from "../firebase";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import AttachFileIcon from "@material-ui/icons/AttachFile";
+import MenuIcon from "@material-ui/icons/Menu";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import Message from "./Message";
 import { useRef, useState } from "react";
 import getRecipientEmail from "../utils/getRecipientEmail";
 import TimeAgo from "timeago-react";
 
-function ChatScreen({ chat, messages }) {
+function ChatScreen({ chat, messages, setSidebar }) {
   const [user] = useAuthState(auth);
   const [input, setInput] = useState("");
   const endOfMessagesRef = useRef(null);
@@ -107,11 +108,11 @@ function ChatScreen({ chat, messages }) {
 
         <HeaderIcons>
           <IconButton>
-            <AttachFileIcon />
+            <MenuIcon onClick={() => setSidebar(true)} color="primary"/>
           </IconButton>
-          <IconButton>
+          {/* <IconButton>
             <MoreVertIcon />
-          </IconButton>
+          </IconButton> */}
         </HeaderIcons>
       </Header>
 
@@ -121,11 +122,11 @@ function ChatScreen({ chat, messages }) {
       </MessageContainer>
 
       <InputContainer>
-        <InsertEmoticonIcon />
+        {/* <InsertEmoticonIcon /> */}
         <Input value={input} onChange={(e) => setInput(e.target.value)} />
-        <button disabled={!input} type="submit" onClick={sendMessage}>
-          Send Message
-        </button>
+        <Button disabled={!input} type="submit" onClick={sendMessage}>
+          <ChevronRightIcon />
+        </Button>
       </InputContainer>
     </Container>
   );
@@ -137,7 +138,8 @@ const Container = styled.div``;
 
 const Header = styled.div`
   position: sticky;
-  background-color: white;
+  background-color: #404040;
+  color: white;
   z-index: 10;
   top: 0;
   display: flex;
@@ -161,16 +163,18 @@ const HeaderInformation = styled.div`
   }
 `;
 
-const HeaderIcons = styled.div``;
+const HeaderIcons = styled.div`
+  border-radius: 50%;
+`;
 
 const MessageContainer = styled.div`
   padding: 30px;
-  background-color: #e5ded8;
+  background-color: #212121;
   min-height: 90vh;
 `;
 
 const EndOfMessage = styled.div`
-margin-bottom: 50px;
+  margin-bottom: 50px;
 `;
 
 const InputContainer = styled.form`
@@ -179,7 +183,7 @@ const InputContainer = styled.form`
   padding: 10px;
   position: sticky;
   bottom: 0;
-  background-color: white;
+  background-color: #404040;
   z-index: 10;
 `;
 
@@ -191,4 +195,11 @@ const Input = styled.input`
   position: sticky;
   bottom: 0;
   background-color: white;
+`;
+
+const Button = styled.button`
+  margin-left: 10px;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
 `;
