@@ -10,7 +10,6 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if (user) {
-      console.log(user);
       db.collection("users").doc(user.uid).set(
         {
           email: user.email,
@@ -19,29 +18,30 @@ function MyApp({ Component, pageProps }) {
         },
         { merge: true }
       );
-      if (
-        user.email != "divyanshvermafast4@gmail.com" &&
-        db
-          .collection("chats")
-          .doc(`${user.email}-div`)
-          .collection("messages") !== null
-      ) {
-        db.collection("chats")
-          .doc(`${user.email}-div`)
-          .set({
-            users: [user.email, "divyanshvermafast4@gmail.com"],
-          });
 
-        db.collection("chats")
-          .doc(`${user.email}-div`)
-          .collection("messages")
-          .add({
-            timestamp: fv.serverTimestamp(),
-            message: "Hello, Welcome to group-div.",
-            user: "divyanshvermafast4@gmail.com",
-            photoURL:
-              "https://lh3.googleusercontent.com/a-/AOh14Gjo3sPcHVcJtdNi5S7QhgYUs8iYcbRo7-EsTO95ApE=s96-c",
-          });
+      let docRef = db.collection("chats").doc(`${user.email}-div`);
+      if (user.email != "divyanshvermafast4@gmail.com") {
+        docRef.get().then((doc) => {
+          if (doc.exists) {
+            console.log("Welcome back");
+          } else {
+            db.collection("chats")
+              .doc(`${user.email}-div`)
+              .set({
+                users: [user.email, "divyanshvermafast4@gmail.com"],
+              });
+            db.collection("chats")
+              .doc(`${user.email}-div`)
+              .collection("messages")
+              .add({
+                timestamp: fv.serverTimestamp(),
+                message: "Hello, Welcome to group-div.",
+                user: "divyanshvermafast4@gmail.com",
+                photoURL:
+                  "https://lh3.googleusercontent.com/a-/AOh14Gjo3sPcHVcJtdNi5S7QhgYUs8iYcbRo7-EsTO95ApE=s96-c",
+              });
+          }
+        });
       }
     }
   }, [user]);
