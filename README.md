@@ -35,7 +35,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 
-# Group-div
+# Direct-div
 
 This project is inspired from whatsapp and allow anyone to login with google and chat with users
 
